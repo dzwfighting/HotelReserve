@@ -64,7 +64,7 @@ public class MainMenu {
                 customer = getExitAccount();
 
                 if (customer == null){
-                    System.out.println("You have not any account, please register and try again");;
+                    System.out.println("You have not any account, please register and try again");
                     customer = createAccount();
                 }
 
@@ -72,6 +72,12 @@ public class MainMenu {
                 while (!bookSuccess){
                     System.out.println("Available Rooms: ");
                     System.out.println(availableRooms);
+
+                    if (availableRooms == null){
+                        System.out.println("This time have not any available rooms, please change another time ");
+                        break;
+                    }
+
                     System.out.println("Please Enter a Room number which you want to book");
                     String roomNumber = scanner.next();
                     IRoom selectRoom = hotelResource.getRoom(roomNumber);
@@ -110,7 +116,7 @@ public class MainMenu {
         String email = scanner.next();
 
         try {
-            hotelResource.createACustomer(firstName, lastName, email);;
+            hotelResource.createACustomer(firstName, lastName, email);
         }catch (IllegalArgumentException e){
             System.out.println(e.getLocalizedMessage());
         }
@@ -126,7 +132,7 @@ public class MainMenu {
     }
 
     public static String showMenu(){
-        System.out.println("_________________________________________");;
+        System.out.println("_________________________________________");
         System.out.println(" Main Menu ");
         System.out.println(" 1. Find and Reserve Room ");
         System.out.println(" 2. See My Reservations ");
